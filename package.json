@@ -18,6 +18,7 @@
     "lib"
   ],
   "scripts": {
+    "pretest": "eslint ./tasks ./lib",
     "test": "mocha --recursive"
   },
   "repository": {
@@ -38,6 +39,8 @@
   "homepage": "https://github.com/contactlab/shipit-clab-deploy#readme",
   "devDependencies": {
     "chai": "3.4.1",
+    "eslint": "4.13.1",
+    "eslint-config-contactlab": "1.0.0",
     "mocha": "2.1.0",
     "rewire": "2.1.4",
     "shipit-cli": "1.4.1",
@@ -54,5 +57,17 @@
     "path2": "0.1.0",
     "rimraf": "2.6.2",
     "shipit-utils": "1.1.3"
-  }
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "extends": [
+      "contactlab"
+    ],
+    "env": {
+      "es6": true,
+      "node": true
+    }
+  },
 }
