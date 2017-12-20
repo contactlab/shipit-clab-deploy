@@ -5,7 +5,9 @@ test('isValid()', t => {
   t.true(
     isValid({
       deployTo: '/var/www/html',
-      releasesDir: 'releases'
+      releasesDir: 'releases',
+      currentDir: 'current',
+      keepReleases: 10
     }),
     'should return T if config object is valid'
   );
@@ -13,6 +15,16 @@ test('isValid()', t => {
   t.false(
     isValid({
       deployTo: '/var/www/html'
+    }),
+    'should return F if config object has not all required keys'
+  );
+
+  t.false(
+    isValid({
+      deployTo: '/var/www/html',
+      releasesDir: false,
+      currentDir: true,
+      keepReleases: 1
     }),
     'should return F if config object is not valid'
   );
