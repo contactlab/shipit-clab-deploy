@@ -1,5 +1,7 @@
+const deploy   = require('./tasks/deploy');
+const rollback = require('./tasks/rollback');
+
 module.exports = function (shipit) {
-  require('./tasks/deploy')(shipit);
-  require('./tasks/rollback')(shipit);
-  require('./tasks/pending')(shipit);
+  deploy(shipit);
+  rollback(shipit);
 };
