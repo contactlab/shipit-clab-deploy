@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "__pretest": "eslint ./tasks ./lib",
-    "test": "ava"
+    "test": "nyc ava"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,8 @@
   "devDependencies": {
     "ava": "0.24.0",
     "eslint": "4.13.1",
-    "eslint-config-contactlab": "1.0.0"
+    "eslint-config-contactlab": "1.0.0",
+    "nyc": "11.4.1"
   },
   "dependencies": {
     "joi": "13.0.2"
@@ -63,5 +64,10 @@
       "es6": true,
       "node": true
     }
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.test.js"
+    ]
   }
 }
