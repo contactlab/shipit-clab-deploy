@@ -42,7 +42,9 @@
     "eslint": "4.13.1",
     "eslint-config-contactlab": "1.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "joi": "13.0.2"
+  },
   "ava": {
     "files": [
       "./test/**/*.test.js"
