@@ -1,22 +1,6 @@
 import test from 'ava';
 import {getReleasesPath, getCurrentPath} from '../lib/config';
-
-const CONFIG_OK = {
-  branch: 'master', // this is an extra key
-  from: './dist',
-  deployTo: '/var/www/html',
-  releasesDir: 'releases',
-  currentDir: 'current',
-  keepReleases: 10
-};
-
-const CONFIG_KO = {
-  from: 123,
-  deployTo: '/var/www/html',
-  releasesDir: false,
-  currentDir: true,
-  keepReleases: 1
-};
+import {CONFIG_KO, CONFIG_OK} from './_helpers';
 
 test('getReleasesPath()', t => {
   t.is(getReleasesPath(CONFIG_OK), '/var/www/html/releases', 'should return `releases` dir path');
