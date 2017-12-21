@@ -1,7 +1,8 @@
 import test from 'ava';
-import {isValid, getReleasesPath, getCurrentPath} from '../lib/config';
+import {getReleasesPath, getCurrentPath} from '../lib/config';
 
 const CONFIG_OK = {
+  branch: 'master', // this is an extra key
   from: './dist',
   deployTo: '/var/www/html',
   releasesDir: 'releases',
@@ -9,31 +10,13 @@ const CONFIG_OK = {
   keepReleases: 10
 };
 
-const CONFIG_MISSING = {
-  deployTo: '/var/www/html'
-};
-
-const CONFIG_INVALID = {
+const CONFIG_KO = {
   from: 123,
   deployTo: '/var/www/html',
   releasesDir: false,
   currentDir: true,
   keepReleases: 1
 };
-
-test('isValid()', t => {
-  t.true(isValid(CONFIG_OK), 'should return T if config object is valid');
-
-  t.false(isValid(CONFIG_MISSING), 'should return F if config object has not all required keys');
-
-  t.false(isValid(CONFIG_INVALID), 'should return F if config object is not valid');
-
-  t.false(isValid(null), 'should return F if config object is null');
-
-  t.false(isValid(), 'should return F if config object is undefined');
-
-  t.false(isValid({}), 'should return F if config object is empty');
-});
 
 test('getReleasesPath()', t => {
   t.is(getReleasesPath(CONFIG_OK), '/var/www/html/releases', 'should return `releases` dir path');
@@ -49,7 +32,7 @@ test('getReleasesPath()', t => {
   }, Error, 'should throw error if config is missing `deployTo` property');
 
   t.throws(() => {
-    getReleasesPath(CONFIG_INVALID);
+    getReleasesPath(CONFIG_KO);
   }, Error, 'should throw error if config is not valid');
 });
 
@@ -67,6 +50,6 @@ test('getCurrentPath()', t => {
   }, Error, 'should throw error if config is missing `deployTo` property');
 
   t.throws(() => {
-    getCurrentPath(CONFIG_INVALID);
+    getCurrentPath(CONFIG_KO);
   }, Error, 'should throw error if config is not valid');
 });
