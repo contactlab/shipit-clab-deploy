@@ -1,5 +1,5 @@
 import test from 'ava';
-import {mkdir, symlink, keepLastOf, revision, countDirs, rm, takeLatest} from '../lib/commands';
+import {mkdir, symlink, keepLastOf, revision, countDirs, rm, takeLatest, gitRev} from '../lib/commands';
 
 test('mkdir()', t => {
   t.is(
@@ -180,4 +180,17 @@ test('takeLatest()', t => {
     takeLatest(null);
     takeLatest();
   }, TypeError, 'should throw error if `path` is neither string nor number');
+});
+
+test('gitRev()', t => {
+  t.is(gitRev('master'), 'git rev-parse master', 'should return a command which gets the last commit hash in `branch`');
+
+  t.is(gitRev('dev'), 'git rev-parse dev', 'should return a command which gets the last commit hash in `branch`');
+
+  t.throws(() => {
+    gitRev(1);
+    gitRev('');
+    gitRev(null);
+    gitRev();
+  }, TypeError, 'should throw error if `branch` is not string or is empty');
 });
