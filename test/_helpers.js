@@ -13,3 +13,9 @@ export const CONFIG_KO = {
   currentDir: true,
   keepReleases: 1
 };
+
+export const initTaskWith = (shipit, config, task) => {
+  task(shipit);
+
+  shipit.initConfig({test: config});
+};
