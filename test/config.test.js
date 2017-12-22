@@ -1,19 +1,53 @@
 import test from 'ava';
-import {getReleasesPath, getCurrentPath} from '../lib/config';
+import {merge, getReleasesPath, getCurrentPath} from '../lib/config';
 import {CONFIG_KO, CONFIG_OK} from './_helpers';
+
+test('merge()', t => {
+  t.deepEqual(
+    merge({deployTo: '/usr/share/nginx'}),
+    {
+      from: 'dist',
+      deployTo: '/usr/share/nginx',
+      releasesDir: 'releases',
+      currentDir: 'current',
+      keepReleases: 10
+    },
+    'should merge provided config with defaults'
+  );
+
+  t.deepEqual(
+    merge({deployTo: '/usr/share/nginx', keepReleases: 2}),
+    {
+      from: 'dist',
+      deployTo: '/usr/share/nginx',
+      releasesDir: 'releases',
+      currentDir: 'current',
+      keepReleases: 2
+    },
+    'should merge provided config with defaults - override'
+  );
+
+  t.deepEqual(
+    merge({deployTo: '/usr/share/nginx', extraKey: 'foo'}),
+    {
+      from: 'dist',
+      deployTo: '/usr/share/nginx',
+      releasesDir: 'releases',
+      currentDir: 'current',
+      keepReleases: 10,
+      extraKey: 'foo'
+    },
+    'should merge provided config with defaults - extend'
+  );
+});
 
 test('getReleasesPath()', t => {
   t.is(getReleasesPath(CONFIG_OK), '/var/www/html/releases', 'should return `releases` dir path');
 
-  t.is(
-    getReleasesPath({deployTo: '/var/www/html'}),
-    '/var/www/html/releases',
-    'should return `releases` dir path - default'
-  );
-
   t.throws(() => {
+    getReleasesPath({deployTo: '/var/www/html'});
     getReleasesPath({});
-  }, Error, 'should throw error if config is missing `deployTo` property');
+  }, Error, 'should throw error if config is missing `deployTo` and `releasesDir` properties');
 
   t.throws(() => {
     getReleasesPath(CONFIG_KO);
@@ -23,15 +57,10 @@ test('getReleasesPath()', t => {
 test('getCurrentPath()', t => {
   t.is(getCurrentPath(CONFIG_OK), '/var/www/html/current', 'should return `current` dir path');
 
-  t.is(
-    getCurrentPath({deployTo: '/var/www/html'}),
-    '/var/www/html/current',
-    'should return `current` dir path - default'
-  );
-
   t.throws(() => {
+    getCurrentPath({deployTo: '/var/www/html'});
     getCurrentPath({});
-  }, Error, 'should throw error if config is missing `deployTo` property');
+  }, Error, 'should throw error if config is missing `deployTo` and `currentDir` properties');
 
   t.throws(() => {
     getCurrentPath(CONFIG_KO);
