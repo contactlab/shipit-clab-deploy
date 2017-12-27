@@ -113,19 +113,19 @@ test('revision()', t => {
 test('countDirs()', t => {
   t.is(
     countDirs('/var/www/html/releases'),
-    'find /var/www/html/releases/ -maxdepth 1 -type d | wc -l',
+    'find /var/www/html/releases/ -maxdepth 1 -mindepth 1 -type d | wc -l',
     'should return a command which counts sub-directories under `path`'
   );
 
   t.is(
     countDirs('/var/www/html/releases/'),
-    'find /var/www/html/releases/ -maxdepth 1 -type d | wc -l',
+    'find /var/www/html/releases/ -maxdepth 1 -mindepth 1 -type d | wc -l',
     'should trim trailing `/` in path'
   );
 
   t.is(
     countDirs(20171217120000),
-    'find 20171217120000/ -maxdepth 1 -type d | wc -l',
+    'find 20171217120000/ -maxdepth 1 -mindepth 1 -type d | wc -l',
     'should return a command which counts sub-directories under `path` - even with number'
   );
 
