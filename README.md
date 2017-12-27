@@ -1,4 +1,4 @@
-# shipit-clab-deploy
+# shipit-clab-deploy [![Build Status](https://travis-ci.org/contactlab/shipit-clab-deploy.svg?branch=master)](https://travis-ci.org/contactlab/shipit-clab-deploy)
 
 [Shipit](https://github.com/shipitjs/shipit) deployment tasks fro ContactLab UI applications.
 
