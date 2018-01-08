@@ -45,14 +45,14 @@ module.exports = shipit => {
     };
 
     /**
-     * Makes a REVISION file in remote `dest` path.
-     * @param {string} dest - Remote destination path
+     * Makes a REVISION file in local `source` path.
+     * @param {string} source - Local source path
      * @returns {Promise}
      */
-    const makeRevision = dest =>
+    const makeRevision = source =>
       shipit.local(gitRev(config.branch))
         .then(response =>
-          shipit.remote(revision(dest, response.stdout.trim()))
+          shipit.local(revision(source, response.stdout.trim()))
         );
 
     const into     = dateHash(new Date());
@@ -62,9 +62,9 @@ module.exports = shipit => {
     const dest     = path.join(releases, into);
 
     return start(`Deploy to ${dest}`)
+            .then(() => makeRevision(source))
             .then(() => shipit.remote(mkdir(dest)))
             .then(() => shipit.remoteCopy(source, dest))
-            .then(() => makeRevision(dest))
             .then(() => shipit.remote(symlink(dest, current)))
             .then(() => shipit.remote(keepLastOf(config.keepReleases, releases)))
             .then(() => shipit.log(`Release ${into} deployed`));

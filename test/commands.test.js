@@ -97,6 +97,12 @@ test('revision()', t => {
     'should return a command which creates a REVISION file under `path` with `hash` as content - even with number'
   );
 
+  t.is(
+    revision('./dist', 'abcd1234'),
+    'echo "abcd1234" > ./dist/REVISION',
+    'should work even with local paths'
+  );
+
   t.throws(() => {
     revision(['20171217120000'], 'abcd1234');
     revision(null, 'abcd1234');
