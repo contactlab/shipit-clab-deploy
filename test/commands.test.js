@@ -183,14 +183,8 @@ test('takeLatest()', t => {
 });
 
 test('gitRev()', t => {
-  t.is(gitRev('master'), 'git rev-parse master', 'should return a command which gets the last commit hash in `branch`');
-
-  t.is(gitRev('dev'), 'git rev-parse dev', 'should return a command which gets the last commit hash in `branch`');
-
-  t.throws(() => {
-    gitRev(1);
-    gitRev('');
-    gitRev(null);
-    gitRev();
-  }, TypeError, 'should throw error if `branch` is not string or is empty');
+  t.is(gitRev(), 'git rev-parse @', 'should always return a command which gets the last commit hash of `HEAD`');
+  t.is(gitRev('master'), 'git rev-parse @', 'should always return a command which gets the last commit hash of `HEAD`');
+  t.is(gitRev(1), 'git rev-parse @', 'should always return a command which gets the last commit hash of `HEAD`');
+  t.is(gitRev(null), 'git rev-parse @', 'should always return a command which gets the last commit hash of `HEAD`');
 });

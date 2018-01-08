@@ -54,7 +54,7 @@ test.cb('deploy - success', t => {
     );
 
     t.true(
-      local.calledWithExactly('git rev-parse master'),
+      local.calledWithExactly('git rev-parse @'),
       'should call a `git rev` local command'
     );
 
@@ -102,7 +102,7 @@ test.cb('deploy - success with defaults', t => {
     );
 
     t.true(
-      local.calledWithExactly('git rev-parse master'),
+      local.calledWithExactly('git rev-parse @'),
       'should call a `git rev` local command'
     );
 
