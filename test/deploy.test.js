@@ -44,6 +44,16 @@ test.cb('deploy - success', t => {
     t.true(log.calledWithExactly('Deploy to /var/www/html/releases/20171220120000'), 'should log message');
 
     t.true(
+      local.calledWithExactly('git rev-parse @'),
+      'should call a `git rev` local command'
+    );
+
+    t.true(
+      local.calledWithExactly('echo "9d63d4" > ./dist/REVISION'),
+      'should call a `revision` remote command with local commit hash'
+    );
+
+    t.true(
       remote.calledWithExactly('mkdir -p /var/www/html/releases/20171220120000'),
       'should call a `mkdir release` remote command'
     );
@@ -51,16 +61,6 @@ test.cb('deploy - success', t => {
     t.true(
       remoteCopy.calledWithExactly('./dist/', '/var/www/html/releases/20171220120000'),
       'should call a `remoteCopy dist -> release` command'
-    );
-
-    t.true(
-      local.calledWithExactly('git rev-parse @'),
-      'should call a `git rev` local command'
-    );
-
-    t.true(
-      remote.calledWithExactly('echo "9d63d4" > /var/www/html/releases/20171220120000/REVISION'),
-      'should call a `revision` remote command with local commit hash'
     );
 
     t.true(
@@ -92,6 +92,16 @@ test.cb('deploy - success with defaults', t => {
     t.true(log.calledWithExactly('Deploy to /usr/share/nginx/releases/20171220120000'), 'should log message');
 
     t.true(
+      local.calledWithExactly('git rev-parse @'),
+      'should call a `git rev` local command'
+    );
+
+    t.true(
+      local.calledWithExactly('echo "9d63d4" > dist/REVISION'),
+      'should call a `revision` remote command with local commit hash'
+    );
+
+    t.true(
       remote.calledWithExactly('mkdir -p /usr/share/nginx/releases/20171220120000'),
       'should call a `mkdir release` remote command'
     );
@@ -99,16 +109,6 @@ test.cb('deploy - success with defaults', t => {
     t.true(
       remoteCopy.calledWithExactly('dist/', '/usr/share/nginx/releases/20171220120000'),
       'should call a `remoteCopy dist -> release` command'
-    );
-
-    t.true(
-      local.calledWithExactly('git rev-parse @'),
-      'should call a `git rev` local command'
-    );
-
-    t.true(
-      remote.calledWithExactly('echo "9d63d4" > /usr/share/nginx/releases/20171220120000/REVISION'),
-      'should call a `revision` remote command with local commit hash'
     );
 
     t.true(
