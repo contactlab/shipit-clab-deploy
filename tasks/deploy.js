@@ -53,7 +53,7 @@ module.exports = shipit => {
     return start(`Deploy to ${dest}`)
             .then(() => makeRevision(source))
             .then(() => shipit.remote(mkdir(dest)))
-            .then(() => shipit.remoteCopy(source, dest))
+            .then(() => shipit.copyToRemote(source, dest))
             .then(() => shipit.remote(symlink(dest, current)))
             .then(() => shipit.remote(keepLastOf(config.keepReleases, releases)))
             .then(() => shipit.log(`Release ${into} deployed`));
