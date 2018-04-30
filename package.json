@@ -46,7 +46,7 @@
     "eslint-config-contactlab": "1.1.1",
     "nyc": "11.7.1",
     "shipit-cli": "4.1.0",
-    "sinon": "4.5.0"
+    "sinon": "5.0.1"
   },
   "dependencies": {
     "joi": "13.2.0"
