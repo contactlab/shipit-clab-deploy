@@ -97,6 +97,24 @@ Number of releases to keep on the remote server.
 - GNU coreutils 5+
 - GNU findutils 4.4.2+
 
+## Contributing
+
+This package uses [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) in order to autogenerate a `CHANGELOG.md` file from commits.
+
+Commits messages should follow the [conventional commits](https://conventionalcommits.org/) standard and the [Angular guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines).
+
+If you want to contribute:
+- open a new issue;
+- fork the repo or create a new branch from `master` with a reference to the issue **\***;
+- write some code;
+- create a pull request from your repo/branch to `master`;
+- merge the PR - **admin only**;
+- run `npm version [major|minor|patch]` on `master` (this will also run the changelog generator) - **admin only**;
+- add a new git tag (annotation = package version) - **admin only**;
+- push with `--follow-tags` flag - **admin only**.
+
+**\*** a good naming convention: *feature/ISSUE_ID-description* or *fix/ISSUE_ID-description*
+
 ## License
 
 Released under the [Apache 2.0](LICENSE) license.
