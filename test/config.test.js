@@ -9,7 +9,8 @@ test('merge()', t => {
       from: 'dist',
       deployTo: '/usr/share/nginx',
       releasesDir: 'releases',
-      currentDir: 'current'
+      currentDir: 'current',
+      keepReleases: 5
     },
     'should merge provided config with defaults'
   );
@@ -33,7 +34,8 @@ test('merge()', t => {
       deployTo: '/usr/share/nginx',
       releasesDir: 'releases',
       currentDir: 'current',
-      extraKey: 'foo'
+      extraKey: 'foo',
+      keepReleases: 5
     },
     'should merge provided config with defaults - extend'
   );
