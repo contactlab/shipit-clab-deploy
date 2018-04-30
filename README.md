@@ -1,5 +1,6 @@
-# shipit-clab-deploy [![Build Status](https://travis-ci.org/contactlab/shipit-clab-deploy.svg?branch=master)](https://travis-ci.org/contactlab/shipit-clab-deploy)
+# shipit-clab-deploy
 
+[![Build Status](https://travis-ci.org/contactlab/shipit-clab-deploy.svg?branch=master)](https://travis-ci.org/contactlab/shipit-clab-deploy)
 [![Greenkeeper badge](https://badges.greenkeeper.io/contactlab/shipit-clab-deploy.svg)](https://greenkeeper.io/)
 
 [Shipit](https://github.com/shipitjs/shipit) deployment tasks for ContactLab UI applications.
