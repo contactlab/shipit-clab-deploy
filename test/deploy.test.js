@@ -4,10 +4,20 @@ import sinon from 'sinon';
 import deploy from '../tasks/deploy';
 import {CONFIG_OK, CONFIG_KO, initTaskWith} from './_helpers';
 
+let oriToISOString;
+
 const handleCommitHash = command =>
   command.indexOf('git rev-parse') === 0 ?
     Promise.resolve({stdout: '9d63d4\n'}) :
     Promise.resolve();
+
+test.before('stubbing Date toISOString method', () => {
+  oriToISOString = Date.prototype.toISOString;
+
+  Date.prototype.toISOString = function() {
+    return '2017-12-20T12:00:00.000Z';
+  }
+});
 
 test.beforeEach('mocking shipit', t => {
   const log = sinon.spy();
@@ -20,19 +30,21 @@ test.beforeEach('mocking shipit', t => {
   t.context.shipit     = shipit;
   t.context.local      = sinon.stub(shipit, 'local').callsFake(handleCommitHash);
   t.context.remote     = sinon.stub(shipit, 'remote').resolves();
-  t.context.remoteCopy = sinon.stub(shipit, 'remoteCopy').resolves();
-  t.context.clock      = sinon.useFakeTimers(Date.UTC(2017, 11, 20, 12, 0, 0));
+  t.context.copyToRemote = sinon.stub(shipit, 'copyToRemote').resolves();
 });
 
 test.afterEach(t => {
   t.context.local.restore();
   t.context.remote.restore();
-  t.context.remoteCopy.restore();
-  t.context.clock.restore();
+  t.context.copyToRemote.restore();
+});
+
+test.after.always('restore Date toISOString method', () => {
+  Date.prototype.toISOString = oriToISOString;
 });
 
 test.cb('deploy - success', t => {
-  const {log, shipit, local, remote, remoteCopy} = t.context;
+  const {log, shipit, local, remote, copyToRemote} = t.context;
 
   initTaskWith(shipit, CONFIG_OK, deploy);
 
@@ -59,8 +71,8 @@ test.cb('deploy - success', t => {
     );
 
     t.true(
-      remoteCopy.calledWithExactly('./dist/', '/var/www/html/releases/20171220120000'),
-      'should call a `remoteCopy dist -> release` command'
+      copyToRemote.calledWithExactly('./dist/', '/var/www/html/releases/20171220120000'),
+      'should call a `copyToRemote dist -> release` command'
     );
 
     t.true(
@@ -80,7 +92,7 @@ test.cb('deploy - success', t => {
 });
 
 test.cb('deploy - success with defaults', t => {
-  const {log, shipit, local, remote, remoteCopy} = t.context;
+  const {log, shipit, local, remote, copyToRemote} = t.context;
 
   initTaskWith(shipit, {deployTo: '/usr/share/nginx/'}, deploy);
 
@@ -107,8 +119,8 @@ test.cb('deploy - success with defaults', t => {
     );
 
     t.true(
-      remoteCopy.calledWithExactly('dist/', '/usr/share/nginx/releases/20171220120000'),
-      'should call a `remoteCopy dist -> release` command'
+      copyToRemote.calledWithExactly('dist/', '/usr/share/nginx/releases/20171220120000'),
+      'should call a `copyToRemote dist -> release` command'
     );
 
     t.true(
@@ -128,7 +140,7 @@ test.cb('deploy - success with defaults', t => {
 });
 
 test.cb('deploy - success with defaults + `from` with trailing slash', t => {
-  const {shipit, remoteCopy} = t.context;
+  const {shipit, copyToRemote} = t.context;
 
   initTaskWith(shipit, {from: 'dist/', deployTo: '/usr/share/nginx/'}, deploy);
 
@@ -138,8 +150,8 @@ test.cb('deploy - success with defaults + `from` with trailing slash', t => {
     }
 
     t.true(
-      remoteCopy.calledWithExactly('dist/', '/usr/share/nginx/releases/20171220120000'),
-      'should call a `remoteCopy dist -> release` command'
+      copyToRemote.calledWithExactly('dist/', '/usr/share/nginx/releases/20171220120000'),
+      'should call a `copyToRemote dist -> release` command'
     );
 
     t.end();

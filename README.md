@@ -80,7 +80,7 @@ Default: `current`
 Define the name of the directory (symlink to the last release) under which the current release is placed.
 
 #### keepReleases: `Number`
-Default: `5` (set by Shipit `initConfig` method)
+Default: `5`
 
 Number of releases to keep on the remote server.
 

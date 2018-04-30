@@ -38,15 +38,15 @@
   },
   "homepage": "https://github.com/contactlab/shipit-clab-deploy#readme",
   "devDependencies": {
-    "ava": "0.24.0",
-    "eslint": "4.15.0",
-    "eslint-config-contactlab": "1.0.0",
-    "nyc": "11.4.1",
-    "shipit-cli": "3.0.0",
-    "sinon": "4.1.4"
+    "ava": "0.25.0",
+    "eslint": "4.19.1",
+    "eslint-config-contactlab": "1.1.1",
+    "nyc": "11.7.1",
+    "shipit-cli": "4.1.0",
+    "sinon": "4.5.0"
   },
   "dependencies": {
-    "joi": "13.1.0"
+    "joi": "13.2.0"
   },
   "ava": {
     "files": [
