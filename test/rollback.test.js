@@ -18,7 +18,7 @@ const handleLatestRelease = (path, oneDir) => command => {
   }
 
   return Promise.resolve();
-}
+};
 
 test.beforeEach('mocking shipit', t => {
   const log = sinon.spy();

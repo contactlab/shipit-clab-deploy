@@ -3,22 +3,11 @@ const {mkdir, gitRev, revision, symlink, keepLastOf} = require('../lib/commands'
 const {merge, getReleasesPath, getCurrentPath}       = require('../lib/config');
 
 /**
- * Converts `number` into `string` adn adds a leading 0 if `n` is lesser than 9.
- * @param {number} n - The number
- * @returns {string}
- */
-const zeroPad = n =>
-  n > 9 ? String(n) : `0${n}`;
-
-/**
  * Returns an hash from date as `YYYYMMDDHHMMSS`.
- * @param {Date} d - Date object
  * @returns {string}
  */
-const dateHash = d =>
-  [d.getUTCFullYear(), (d.getUTCMonth() + 1), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds()]
-    .map(zeroPad)
-    .join('');
+const dateHash = () =>
+  (new Date()).toISOString().replace(/[\D]+/g, '').substring(0, 14);
 
 /**
  * Add trailing `c` character to `s` if `s` doesn't already end with `c`.
@@ -55,7 +44,7 @@ module.exports = shipit => {
           shipit.local(revision(source, response.stdout.trim()))
         );
 
-    const into     = dateHash(new Date());
+    const into     = dateHash();
     const source   = trailing('/', config.from);
     const releases = getReleasesPath(config);
     const current  = getCurrentPath(config);
