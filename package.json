@@ -41,11 +41,11 @@
   "homepage": "https://github.com/contactlab/shipit-clab-deploy#readme",
   "devDependencies": {
     "ava": "0.25.0",
-    "conventional-changelog-cli": "1.3.22",
+    "conventional-changelog-cli": "2.0.0",
     "eslint": "4.19.1",
     "eslint-config-contactlab": "2.0.0",
-    "nyc": "11.7.2",
-    "shipit-cli": "4.1.0",
+    "shipit-cli": "4.1.1",
+    "nyc": "11.8.0",
     "sinon": "5.0.6"
   },
   "dependencies": {
