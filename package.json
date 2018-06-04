@@ -44,8 +44,8 @@
     "conventional-changelog-cli": "2.0.0",
     "eslint": "4.19.1",
     "eslint-config-contactlab": "2.0.0",
+    "shipit-cli": "4.1.1",
     "nyc": "11.8.0",
-    "shipit-cli": "4.1.0",
     "sinon": "5.0.6"
   },
   "dependencies": {
