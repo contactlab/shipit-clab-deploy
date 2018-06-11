@@ -9,7 +9,7 @@
 
 
 <a name="2.1.0"></a>
-# [2.1.0](https://github.com/contactlab/shipit-clab-deploy/compare/2.0.0...2.1.0) (2018-06-05)
+## [2.1.0](https://github.com/contactlab/shipit-clab-deploy/compare/2.0.0...2.1.0) (2018-06-05)
 
 
 ### Bug Fixes
@@ -19,7 +19,7 @@
 
 
 <a name="2.0.0"></a>
-# [2.0.0](https://github.com/contactlab/shipit-clab-deploy/compare/1.0.3...2.0.0) (2018-04-30)
+## [2.0.0](https://github.com/contactlab/shipit-clab-deploy/compare/1.0.3...2.0.0) (2018-04-30)
 
 
 ### Bug Fixes
