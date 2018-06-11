@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/contactlab/shipit-clab-deploy/compare/2.1.0...2.1.1) (2018-06-11)
+
+
+### Bug Fixes
+
+* **package:** update joi to version 13.4.0 ([c770c59](https://github.com/contactlab/shipit-clab-deploy/commit/c770c59))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/contactlab/shipit-clab-deploy/compare/2.0.0...2.1.0) (2018-06-05)
 
