@@ -49,7 +49,7 @@
     "sinon": "6.0.1"
   },
   "dependencies": {
-    "joi": "13.4.0"
+    "joi": "13.5.0"
   },
   "ava": {
     "files": [
