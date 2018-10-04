@@ -1,6 +1,6 @@
 {
   "name": "@contactlab/shipit-clab-deploy",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Set of deployment tasks for Shipit - Contactlab UI flavour",
   "main": "index.js",
   "engines": {
@@ -49,7 +49,7 @@
     "sinon": "6.3.4"
   },
   "dependencies": {
-    "joi": "13.6.0"
+    "joi": "13.7.0"
   },
   "ava": {
     "files": [
