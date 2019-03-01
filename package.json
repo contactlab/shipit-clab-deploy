@@ -40,16 +40,16 @@
     "postversion": "npm run changelog"
   },
   "dependencies": {
-    "joi": "14.0.3"
+    "joi": "14.3.1"
   },
   "devDependencies": {
-    "ava": "0.25.0",
-    "conventional-changelog-cli": "2.0.11",
-    "eslint": "5.6.0",
-    "eslint-config-contactlab": "2.0.1",
-    "nyc": "13.0.1",
-    "shipit-cli": "4.1.1",
-    "sinon": "6.3.4"
+    "ava": "1.2.1",
+    "conventional-changelog-cli": "2.0.12",
+    "eslint": "5.14.1",
+    "eslint-config-contactlab": "2.0.2",
+    "nyc": "13.3.0",
+    "shipit-cli": "4.2.0",
+    "sinon": "7.2.5"
   },
   "ava": {
     "files": [
