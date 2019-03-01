@@ -2,7 +2,22 @@
   "name": "@contactlab/shipit-clab-deploy",
   "version": "2.2.2",
   "description": "Set of deployment tasks for Shipit - Contactlab UI flavour",
-  "main": "index.js",
+  "author": "Contactlab",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contactlab/shipit-clab-deploy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/contactlab/shipit-clab-deploy/issues"
+  },
+  "homepage": "https://github.com/contactlab/shipit-clab-deploy#readme",
+  "keywords": [
+    "shipit",
+    "deploy",
+    "task",
+    "contactlab"
+  ],
   "engines": {
     "node": ">= 8",
     "npm": ">= 5.2.0"
@@ -17,28 +32,16 @@
     "tasks",
     "lib"
   ],
+  "main": "index.js",
   "scripts": {
     "pretest": "eslint ./tasks ./lib",
     "test": "nyc ava",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "postversion": "npm run changelog"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/contactlab/shipit-clab-deploy.git"
+  "dependencies": {
+    "joi": "14.0.3"
   },
-  "keywords": [
-    "shipit",
-    "deploy",
-    "task",
-    "contactlab"
-  ],
-  "author": "Contactlab Front-end Team",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/contactlab/shipit-clab-deploy/issues"
-  },
-  "homepage": "https://github.com/contactlab/shipit-clab-deploy#readme",
   "devDependencies": {
     "ava": "0.25.0",
     "conventional-changelog-cli": "2.0.11",
@@ -47,9 +50,6 @@
     "nyc": "13.0.1",
     "shipit-cli": "4.1.1",
     "sinon": "6.3.4"
-  },
-  "dependencies": {
-    "joi": "14.0.3"
   },
   "ava": {
     "files": [
