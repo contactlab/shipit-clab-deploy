@@ -45,7 +45,7 @@
   "devDependencies": {
     "ava": "1.4.1",
     "conventional-changelog-cli": "2.0.12",
-    "eslint": "5.15.3",
+    "eslint": "5.16.0",
     "eslint-config-contactlab": "2.0.2",
     "nyc": "13.3.0",
     "shipit-cli": "4.2.0",
