@@ -1,3 +1,5 @@
+:warning: **This project is no longer mantained**
+
 # shipit-clab-deploy
 
 [![Build Status](https://travis-ci.org/contactlab/shipit-clab-deploy.svg?branch=master)](https://travis-ci.org/contactlab/shipit-clab-deploy)
